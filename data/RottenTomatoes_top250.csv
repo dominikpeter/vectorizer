@@ -1,0 +1,251 @@
+Movie,Year,Critics,Audience
+ The Shawshank Redemption,1994.0,91,98
+ The Godfather,1972.0,99,98
+ The Godfather: Part II,1974.0,97,97
+ The Dark Knight,2008.0,94,94
+12 Angry Men ,1957.0,100,97
+Schindler's List ,1993.0,96,97
+Pulp Fiction ,1994.0,94,96
+ The Lord of the Rings: The Return of the King,2003.0,95,86
+ Il  il cattivo. il bruttoBuono,1966.0,NA,NA
+Fight Club ,1999.0,79,96
+ The Lord of the Rings: The Fellowship of the Ring,2001.0,91,95
+Star Wars: Episode V - The Empire Strikes Back ,1980.0,94,97
+Forrest Gump ,1994.0,72,95
+Inception ,2010.0,86,91
+ The Lord of the Rings: The Two Towers,2002.0,96,95
+One Flew Over the Cuckoo's Nest ,1975.0,95,96
+Goodfellas ,1990.0,96,97
+ The Matrix,1999.0,87,85
+Shichinin no samurai ,1954.0,NA,NA
+Star Wars ,1977.0,NA,NA
+Cidade de Deus ,2002.0,90,97
+Se7en ,1995.0,80,95
+ The Silence of the Lambs,1991.0,95,95
+It's a Wonderful Life ,1946.0,94,95
+ The Usual Suspects,1995.0,88,96
+ La Vita Ã¨ bella,1997.0,NA,NA
+LÃ©on ,1994.0,NA,NA
+Sen to Chihiro no kamikakushi ,2001.0,NA,NA
+Saving Private Ryan ,1998.0,92,95
+C'era una volta il West ,1968.0,NA,NA
+American History X ,1998.0,83,96
+Interstellar ,2014.0,71,85
+Casablanca ,1942.0,97,95
+Psycho ,1960.0,96,94
+City Lights ,1931.0,98,96
+Raiders of the Lost Ark ,1981.0,94,96
+ The Green Mile,1999.0,80,94
+Intouchables ,2011.0,74,93
+Modern Times ,1936.0,100,95
+Rear Window ,1954.0,100,95
+Terminator 2: Judgment Day ,1991.0,93,94
+ The Departed,2006.0,91,94
+ The Pianist,2002.0,96,95
+Back to the Future ,1985.0,96,94
+Whiplash ,2014.0,94,94
+Gladiator ,2000.0,76,87
+Memento ,2000.0,92,94
+Apocalypse Now ,1979.0,97,94
+ The Prestige,2006.0,76,92
+ The Lion King,1994.0,92,93
+Alien ,1979.0,97,94
+Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb ,1964.0,99,94
+Sunset Blvd. ,1950.0,98,95
+ The Great Dictator,1940.0,92,95
+ Das Leben der Anderen,2006.0,NA,NA
+Nuovo Cinema Paradiso ,1988.0,90,97
+Paths of Glory ,1957.0,94,95
+Django Unchained ,2012.0,88,91
+ The Shining,1980.0,88,93
+Hotaru no haka ,1988.0,97,95
+WALLÂ·E ,2008.0,0,0
+ The Dark Knight Rises,2012.0,87,90
+American Beauty ,1999.0,88,93
+Aliens ,1986.0,98,94
+Mononoke-hime ,1997.0,NA,NA
+Oldeuboi ,2003.0,NA,NA
+Once Upon a Time in America ,1984.0,89,94
+Citizen Kane ,1941.0,100,90
+ Das Boot,1981.0,98,96
+North by Northwest ,1959.0,100,94
+Witness for the Prosecution ,1957.0,100,95
+Vertigo ,1958.0,97,93
+Star Wars: Episode VI - Return of the Jedi ,1983.0,80,94
+M ,1931.0,100,95
+Reservoir Dogs ,1992.0,90,94
+Braveheart ,1995.0,78,85
+ Le Fabuleux destin d'AmÃ©lie Poulain,2001.0,NA,NA
+Requiem for a Dream ,2000.0,78,93
+ A Clockwork Orange,1971.0,90,93
+Taxi Driver ,1976.0,99,93
+Double Indemnity ,1944.0,96,95
+Lawrence of Arabia ,1962.0,97,93
+To Kill a Mockingbird ,1962.0,91,93
+Toy Story 3 ,2010.0,99,89
+Eternal Sunshine of the Spotless Mind ,2004.0,93,94
+Amadeus ,1984.0,95,95
+Full Metal Jacket ,1987.0,95,94
+ The Sting,1973.0,93,95
+2001: A Space Odyssey ,1968.0,94,89
+Ladri di biciclette ,1948.0,NA,NA
+Toy Story ,1995.0,100,92
+Snatch. ,2000.0,73,93
+Singin' in the Rain ,1952.0,100,95
+Inglourious Basterds ,2009.0,89,87
+ The Kid,1921.0,100,96
+Monty Python and the Holy Grail ,1975.0,97,95
+L.A. Confidential ,1997.0,99,94
+Per qualche dollaro in piÃ¹ ,1965.0,NA,NA
+RashÃ´mon ,1950.0,NA,NA
+ The Apartment,1960.0,93,94
+Scarface ,1983.0,82,94
+3 Idiots ,2009.0,100,92
+Indiana Jones and the Last Crusade ,1989.0,88,94
+Jodaeiye Nader az Simin ,2011.0,99,92
+Metropolis ,1927.0,99,92
+Jagten ,2012.0,NA,NA
+Good Will Hunting ,1997.0,97,94
+All About Eve ,1950.0,100,94
+YÃ´jinbÃ´ ,1961.0,NA,NA
+Batman Begins ,2005.0,84,94
+ The Treasure of the Sierra Madre,1948.0,100,93
+Some Like It Hot ,1959.0,96,94
+Up ,2009.0,98,90
+Unforgiven ,1992.0,95,93
+ The Third Man,1949.0,100,93
+ Der Untergang,2004.0,91,94
+Raging Bull ,1980.0,97,93
+Bacheha-Ye aseman ,1997.0,NA,NA
+Die Hard ,1988.0,92,94
+ The Great Escape,1963.0,93,95
+Chinatown ,1974.0,98,93
+Heat ,1995.0,86,94
+Inside Out ,2015.0,98,89
+ El Laberinto del fauno,2006.0,NA,NA
+Room ,2015.0,91,75
+On the Waterfront ,1954.0,98,95
+Tonari no Totoro ,1988.0,NA,NA
+Ikiru ,1952.0,NA,NA
+Ran ,1985.0,96,95
+ The Gold Rush,1925.0,100,93
+Mr. Smith Goes to Washington ,1939.0,94,94
+ The Bridge on the River Kwai,1957.0,94,93
+ El Secreto de sus ojos,2009.0,91,93
+Blade Runner ,1982.0,89,91
+ Det Sjunde inseglet,1957.0,92,93
+ Stock and Two Smoking Barrels Lock,1998.0,76,93
+Hauru no ugoku shiro ,2004.0,87,93
+ La Passion de Jeanne d'Arc,1928.0,97,93
+Casino ,1995.0,80,93
+Judgment at Nuremberg ,1961.0,90,93
+SmultronstÃ¤llet ,1957.0,NA,NA
+ The General,1926.0,93,92
+ The Elephant Man,1980.0,90,93
+Sunrise ,1927.0,98,92
+ A Beautiful Mind,2001.0,75,93
+Warrior ,2011.0,82,92
+ The Wolf of Wall Street,2013.0,77,82
+V for Vendetta ,2005.0,73,90
+Incendies ,2010.0,92,92
+Gran Torino ,2008.0,79,90
+ The Big Lebowski,1998.0,81,94
+TÃ´kyÃ´ monogatari ,1953.0,NA,NA
+ The Deer Hunter,1978.0,93,92
+Dial M for Murder ,1954.0,88,92
+Trainspotting ,1996.0,90,93
+Gone with the Wind ,1939.0,94,93
+Fargo ,1996.0,94,93
+Star Wars: Episode VII - The Force Awakens ,2015.0,92,89
+Rebecca ,1940.0,100,92
+Cool Hand Luke ,1967.0,100,95
+Finding Nemo ,2003.0,99,86
+ The Sixth Sense,1999.0,85,89
+How to Train Your Dragon ,2010.0,98,91
+ The Thing,1982.0,NA,NA
+No Country for Old Men ,2007.0,93,86
+Into the Wild ,2007.0,82,89
+Kill Bill: Vol. 1 ,2003.0,NA,NA
+Mary and Max ,2009.0,95,92
+Gone Girl ,2014.0,88,87
+Idi i smotri ,1985.0,95,96
+It Happened One Night ,1934.0,98,93
+There Will Be Blood ,2007.0,91,86
+Life of Brian ,1979.0,96,93
+ The Message,1976.0,0,0
+Rush ,2013.0,89,88
+Hotel Rwanda ,2004.0,90,94
+Platoon ,1986.0,88,93
+ Le Notti di Cabiria,1957.0,97,94
+ Le Salaire de la peur,1953.0,NA,NA
+Network ,1976.0,91,93
+Shutter Island ,2010.0,68,76
+Spotlight ,2015.0,96,93
+ The Maltese Falcon,1941.0,100,91
+Butch Cassidy and the Sundance Kid ,1969.0,89,92
+Mad Max: Fury Road ,2015.0,97,86
+Stand by Me ,1986.0,91,94
+In the Name of the Father ,1993.0,94,95
+ Les Quatre cents coups,1959.0,100,94
+12 Years a Slave ,2013.0,96,90
+Relatos salvajes ,2014.0,95,92
+Persona ,1966.0,88,94
+ The Grand Budapest Hotel,2014.0,92,86
+Ben-Hur ,1959.0,88,89
+Amores perros ,2000.0,92,94
+Million Dollar Baby ,2004.0,91,90
+ The Princess Bride,1987.0,97,95
+Jurassic Park ,1993.0,93,91
+Hachi: A Dog's Tale ,2009.0,62,85
+Zootopia ,2016.0,98,93
+Kaze no tani no Naushika ,1984.0,87,91
+Touch of Evil ,1958.0,96,92
+ The Grapes of Wrath,1940.0,100,88
+Stalker ,1979.0,100,93
+Salinui chueok ,2003.0,NA,NA
+Annie Hall ,1977.0,98,93
+ The Truman Show,1998.0,94,88
+Before Sunrise ,1995.0,100,93
+ The Bourne Ultimatum,2007.0,93,91
+Gandhi ,1982.0,88,92
+ Les Diaboliques,1955.0,97,93
+Rocky ,1976.0,93,69
+Donnie Darko ,2001.0,85,80
+Harry Potter and the Deathly Hallows: Part 2 ,2011.0,96,89
+8Â½ ,1963.0,NA,NA
+ Inc. Monsters,2001.0,96,90
+ The Wizard of Oz,1939.0,99,89
+ The Terminator,1984.0,100,89
+Groundhog Day ,1993.0,96,87
+Twelve Monkeys ,1995.0,88,88
+Prisoners ,2013.0,81,87
+Jaws ,1975.0,97,90
+ The Best Years of Our Lives,1946.0,96,92
+Mou gaan dou ,2002.0,95,95
+Barry Lyndon ,1975.0,97,92
+ La Haine,1995.0,100,95
+Strangers on a Train ,1951.0,98,92
+Catch Me If You Can ,2002.0,96,89
+Sin City ,2005.0,78,78
+ La Battaglia di Algeri,1966.0,99,95
+Kind Hearts and Coronets ,1949.0,100,94
+Dog Day Afternoon ,1975.0,95,90
+Song of the Sea ,2014.0,99,92
+ The Revenant,2015.0,82,84
+Deadpool ,2016.0,84,90
+Pirates of the Caribbean: The Curse of the Black Pearl ,2003.0,79,86
+Yip Man ,2008.0,NA,NA
+ The Imitation Game,2014.0,90,91
+ The Help,2011.0,75,89
+Gangs of Wasseypur ,2012.0,NA,NA
+ The Martian,2015.0,92,91
+Roman Holiday ,1953.0,98,94
+TenkÃ» no shiro Rapyuta ,1986.0,NA,NA
+Per un pugno di dollari ,1964.0,98,91
+Guardians of the Galaxy ,2014.0,91,92
+Fanny och Alexander ,1982.0,NA,NA
+ The King's Speech,2010.0,95,92
+ The Avengers,2012.0,92,91
+Lagaan: Once Upon a Time in India ,2001.0,95,93
+Beauty and the Beast ,1991.0,93,92
+ Texas Paris,1984.0,100,94
