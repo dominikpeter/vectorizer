@@ -108,7 +108,6 @@ class Vectorizer(object):
             return {v: transformer for v in val}
 
     def _onehot_encoder(self, column):
-        print("one hot enccoder")
         onehot = OneHotEncoder(handle_unknown="ignore")
         onehot.fit(self._X[column].values.reshape(-1, 1))
         onehot_X = onehot.transform(
@@ -138,7 +137,6 @@ class Vectorizer(object):
         return self._raw_encoder()
 
     def _raw_encoder(self):
-        print("Raw encoder")
         raw_X = hstack(
             [csr_matrix(self._X[i][:,np.newaxis]) for i in self._raw_column])
         if self._y is not None:
