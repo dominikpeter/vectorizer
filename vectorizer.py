@@ -43,7 +43,7 @@ class Vectorizer(object):
     one_hot_column :    Column name(s) to turn into one hot columns, default=None.
     word_column :       Column name(s) to turn into word counts, default=None
     raw_column :        Column name(s) to return as sparse matrix with optional transformation
-                        default: None
+                        default=None
     word_tokenizer :    Tokenizer for all columns or a dict with a tokenizer for each column 
                         default=TreebankWordTokenizer().tokenize
     word_vectorizer :   WordVectorizer for all columns or a dict with a tokenizer for each column 
@@ -56,8 +56,8 @@ class Vectorizer(object):
     Examples
     --------
     df = pd.DataFrame({"Word": ["Hello", "World", "Hello", "World"],
-                   "One Hot": ["Hello", "What", "Bye", "Bye"],
-                   "Raw": [1, 2, 3, 4]})
+                       "One Hot": ["Hello", "What", "Bye", "Bye"],
+                       "Raw": [1, 2, 3, 4]})
                    
     Vectorizer(df, word_column="Word").word_encoder()
     Vectorizer(df, one_hot_column="One Hot").onehot_encoder()
