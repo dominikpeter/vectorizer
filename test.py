@@ -11,7 +11,7 @@ df = pd.DataFrame({"Word": ["Hello", "World", "Hello", "World"],
 
 
 class TestShape(object):
-    def test_word_vecotizer(self):
+    def test_word_vectorizer(self):
         word_vec = Vectorizer(df, word_column="Word").word_encoder()
         assert(word_vec.shape == (4, 2))
 
