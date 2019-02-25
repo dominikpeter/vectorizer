@@ -38,32 +38,39 @@ class Vectorizer(object):
 
     Parameters
     ----------
-    categories : 'auto' or a list of lists/arrays of values, default='auto'.
-    sparse : boolean, default=True
-        Will return sparse matrix if set True else will return an array.
-    dtype : number type, default=np.float
-        Desired dtype of output.
+    X:                  A DataFrame.
+    y :                 A DataFrame, default=None.
+    one_hot_column :    Column name(s) to turn into one hot columns, default=None.
+    word_column :       Column name(s) to turn into word counts, default=None
+    raw_column :        Column name(s) to return as sparse matrix with optional transformation
+                        default: None
+    word_tokenizer :    Tokenizer for all columns or a dict with a tokenizer for each column 
+                        default=TreebankWordTokenizer().tokenize
+    word_vectorizer :   WordVectorizer for all columns or a dict with a tokenizer for each column 
+                        default=TfidfVectorizer
 
     Attributes
     ----------
-    categories_ : list of arrays
-        The categories of each feature determined during fitting
-        (in order of the features in X and corresponding with the output
-        of ``transform``).
+    todo_ : 
 
     Examples
     --------
-    Given a dataset with two features, we let the encoder find the unique
-    values per feature and transform the data to a binary one-hot encoding.
-
+    df = pd.DataFrame({"Word": ["Hello", "World", "Hello", "World"],
+                   "One Hot": ["Hello", "What", "Bye", "Bye"],
+                   "Raw": [1, 2, 3, 4]})
+                   
+    Vectorizer(df, word_column="Word").word_encoder()
+    Vectorizer(df, one_hot_column="One Hot").onehot_encoder()
+    Vectorizer(df, raw_column="Raw").raw_encoder()
+    Vectorizer(df, word_column="Word", one_hot_column="One Hot", raw_column="Raw").encode()
     """
 
     def __init__(self, X, y=None,
                  one_hot_column=None,
                  word_column=None,
                  raw_column=None,
-                 word_tokenizer=None,
-                 word_vectorizer=None,
+                 word_tokenizer=TreebankWordTokenizer().tokenize,
+                 word_vectorizer=TfidfVectorizer,
                  normalize=True):
         assert(isinstance(X, pd.DataFrame))
         assert(any([one_hot_column, word_column, raw_column]))
@@ -90,9 +97,9 @@ class Vectorizer(object):
 
         if self._has_word_column:
             self._word_tokenizer = self._word_transformer_to_dict(
-                self._word_column, TreebankWordTokenizer().tokenize)
+                self._word_column, word_tokenizer)
             self._word_vecotrizer = self._word_transformer_to_dict(
-                self._word_column, TfidfVectorizer)
+                self._word_column, word_vectorizer)
 
         self._normalize = normalize
 
