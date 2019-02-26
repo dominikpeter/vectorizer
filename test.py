@@ -12,13 +12,13 @@ df = pd.DataFrame({"Word": ["Hello", "World", "Hello", "World"],
 
 class TestShape(object):
     def test_word_vectorizer(self):
-        word_vec = Vectorizer(df, word_column="Word").word_encoder()
+        word_vec = Vectorizer(df, word_column="Word").word_encode()
         assert(word_vec.shape == (4, 2))
 
     def test_one_hot_vectorizer(self):
-        onehot_vec = Vectorizer(df, one_hot_column="One Hot").onehot_encoder()
+        onehot_vec = Vectorizer(df, one_hot_column="One Hot").onehot_encode()
         assert(onehot_vec.shape == (4, 3))
 
     def test_raw_vectorizer(self):
-        raw_vec = Vectorizer(df, raw_column="Raw").raw_encoder()
+        raw_vec = Vectorizer(df, raw_column="Raw").raw_encode()
         assert(raw_vec.shape == (4, 1))

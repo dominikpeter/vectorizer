@@ -24,62 +24,65 @@ def check_column_in_df(df, cols):
     return True
 
 
-def check_if_number(dtype):
-    return np.issubdtype(dtype, np.number)
+def check_dtype_is_number(train):
+    return np.issubdtype(train, np.number)
 
 
-def check_dtype_is_number(x):
-    return check_if_number(x)
+treebank_word_tokenizer = TreebankWordTokenizer().tokenize
 
 
 class Vectorizer(object):
     """Vecotrizing features
-    Always returning a sparse matrix
+    Alwatests returning a sparse matritrain
 
     Parameters
     ----------
-    X:                  A DataFrame.
-    y :                 A DataFrame, default=None.
+    train :             A DataFrame.
+    test :              A DataFrame, the result will have the same number
+                        of columns as the first train result default=None.
     one_hot_column :    Column name(s) to turn into one hot columns, default=None.
     word_column :       Column name(s) to turn into word counts, default=None
-    raw_column :        Column name(s) to return as sparse matrix with optional transformation
+    raw_column :        Column name(s) to return as sparse matritrain with optional transformation
                         default=None
-    word_tokenizer :    Tokenizer for all columns or a dict with a tokenizer for each column 
-                        default=TreebankWordTokenizer().tokenize
-    word_vectorizer :   WordVectorizer for all columns or a dict with a tokenizer for each column 
+    word_tokenizer :    Tokenizer for all columns or a dict with a tokenizer for each column
+                        default=treebank_word_tokenizer
+    word_vectorizer :   WordVectorizer for all columns or a dict with a tokenizer for each column
                         default=TfidfVectorizer
 
     Attributes
     ----------
-    todo_ : 
+    encoded_train_ :    Spare matritrain with the encoded columns
+    encoded_test_ :     Sparse matritrain with the encoded columns
 
     Examples
     --------
     df = pd.DataFrame({"Word": ["Hello", "World", "Hello", "World"],
-                       "One Hot": ["Hello", "What", "Bye", "Bye"],
+                       "One Hot": ["Hello", "What", "bye", "bye"],
                        "Raw": [1, 2, 3, 4]})
-                   
-    Vectorizer(df, word_column="Word").word_encoder()
-    Vectorizer(df, one_hot_column="One Hot").onehot_encoder()
-    Vectorizer(df, raw_column="Raw").raw_encoder()
-    Vectorizer(df, word_column="Word", one_hot_column="One Hot", raw_column="Raw").encode()
+
+    Vectorizer(df, word_column="Word").word_encode()
+    Vectorizer(df, one_hot_column="One Hot").onehot_encode()
+    Vectorizer(df, raw_column="Raw").raw_encode()
+    Vectorizer(df, word_column="Word",
+               one_hot_column="One Hot",
+               raw_column="Raw").encode()
     """
 
-    def __init__(self, X, y=None,
+    def __init__(self, train, test=None,
                  one_hot_column=None,
                  word_column=None,
                  raw_column=None,
-                 word_tokenizer=TreebankWordTokenizer().tokenize,
+                 word_tokenizer=treebank_word_tokenizer,
                  word_vectorizer=TfidfVectorizer,
                  normalize=True):
-        assert(isinstance(X, pd.DataFrame))
+        assert(isinstance(train, pd.DataFrame))
         assert(any([one_hot_column, word_column, raw_column]))
-        self._X = X.copy()
-        if y is not None:
-            assert(isinstance(y, pd.DataFrame))
-            self._y = y.copy()
+        self._train = train.copy()
+        if test is not None:
+            assert(isinstance(test, pd.DataFrame))
+            self._test = test.copy()
         else:
-            self._y = None
+            self._test = None
 
         self._has_word_column = True if word_column else False
         self._has_onehot_column = True if one_hot_column else False
@@ -104,9 +107,34 @@ class Vectorizer(object):
         self._normalize = normalize
 
     def _check_column_in_df(self, to_check):
-        assert(check_column_in_df(self._X, to_check))
-        if self._y is not None:
-            assert(check_column_in_df(self._y, to_check))
+        assert(check_column_in_df(self._train, to_check))
+        if self._test is not None:
+            assert(check_column_in_df(self._test, to_check))
+
+    def _hstack(self, fun, columns):
+        if self._test is not None:
+            train_stack = hstack([fun(i)[0] for i in columns])
+            test_stack = hstack([fun(i)[1] for i in columns])
+            return train_stack, test_stack
+        else:
+            train_stack = hstack([fun(i) for i in columns])
+        return train_stack
+
+    def _onehot_encode(self, column):
+        onehot = OneHotEncoder(handle_unknown="ignore")
+        onehot.fit(self._train[column].values.reshape(-1, 1))
+        onehot_train = onehot.transform(
+            self._train[column].values.reshape(-1, 1))
+        if self._test is not None:
+            onehot_test = onehot.transform(
+                self._test[column].values.reshape(-1, 1))
+            return onehot_train, onehot_test
+        else:
+            return onehot_train
+
+    def onehot_encode(self):
+        assert(self._has_onehot_column)
+        return self._hstack(self._onehot_encode, self._one_hot_column)
 
     def _word_transformer_to_dict(self, val, transformer):
         if isinstance(val, dict):
@@ -114,84 +142,60 @@ class Vectorizer(object):
         else:
             return {v: transformer for v in val}
 
-    def _onehot_encoder(self, column):
-        onehot = OneHotEncoder(handle_unknown="ignore")
-        onehot.fit(self._X[column].values.reshape(-1, 1))
-        onehot_X = onehot.transform(
-            self._X[column].values.reshape(-1, 1))
-        if self._y is not None:
-            onehot_y = onehot.transform(
-                self._y[column].values.reshape(-1, 1))
-            return onehot_X, onehot_y
-        else:
-            return onehot_X
-
-    def onehot_encoder(self):
-        assert(self._has_onehot_column)
-        return self._hstack(self._onehot_encoder, self._one_hot_column)
-
-    def word_encoder(self):
-        assert(self._has_word_column)
-        return self._hstack(self._word_encoder, self._word_column)
-
-    def raw_encoder(self):
-        assert(self._has_raw_column)
-        assert(
-            all([check_dtype_is_number(self._X[i]) for i in self._raw_column]))
-        if self._y is not None:
-            assert(
-                all([check_dtype_is_number(self._y[i]) for i in self._raw_column]))
-        return self._raw_encoder()
-
-    def _raw_encoder(self):
-        raw_X = hstack(
-            [csr_matrix(self._X[i][:,np.newaxis]) for i in self._raw_column])
-        if self._y is not None:
-            raw_y = hstack(
-                [csr_matrix(self._y[i][:,np.newaxis]) for i in self._raw_column])
-        if self._normalize:
-            raw_X = normalize(raw_X)
-            if self._y is not None:
-                raw_y = normalize(raw_y)
-        if self._y is not None:
-            return raw_X, raw_y
-        return raw_X
-
-    def _word_encoder(self, column):
+    def _word_encode(self, column):
         tokenizer_ = self._word_tokenizer[column]
         vectorizer_ = self._word_vecotrizer[column]
         wordv = vectorizer_(tokenizer=tokenizer_)
-        wordv.fit(self._X[column])
-        word_vector_X = wordv.transform(self._X[column])
-        if self._y is not None:
-            word_vector_y = wordv.transform(self._y[column])
-            return word_vector_X, word_vector_y
-        return word_vector_X
+        wordv.fit(self._train[column])
+        word_vector_train = wordv.transform(self._train[column])
+        if self._test is not None:
+            word_vector_test = wordv.transform(self._test[column])
+            return word_vector_train, word_vector_test
+        return word_vector_train
 
-    def _hstack(self, fun, columns):
-        if self._y is not None:
-            X_stack = hstack([fun(i)[0] for i in columns])
-            Y_stack = hstack([fun(i)[1] for i in columns])
-            return X_stack, Y_stack
-        else:
-            X_stack = hstack([fun(i) for i in columns])
-        return X_stack
+    def word_encode(self):
+        assert(self._has_word_column)
+        return self._hstack(self._word_encode, self._word_column)
+
+    def raw_encode(self):
+        assert(self._has_raw_column)
+        assert(
+            all([check_dtype_is_number(self._train[i]) for i in self._raw_column]))
+        if self._test is not None:
+            assert(all([check_dtype_is_number(
+                        self._test[i]) for i in self._raw_column]))
+        return self._raw_encode()
+
+    def _raw_encode(self):
+        raw_train = hstack(
+            [csr_matrix(self._train[i][:, np.newaxis]) for i in self._raw_column])
+        if self._test is not None:
+            raw_test = hstack(
+                [csr_matrix(
+                    self._test[i][:, np.newaxis]) for i in self._raw_column])
+        if self._normalize:
+            raw_train = normalize(raw_train)
+            if self._test is not None:
+                raw_test = normalize(raw_test)
+        if self._test is not None:
+            return raw_train, raw_test
+        return raw_train
+
+    def _encode(self, *encoders):
+        encoded_vectors = [encoder() for encoder in encoders]
+        if self._test is not None:
+            self.encoded_train_ = hstack([i[0] for i in encoded_vectors])
+            self.encoded_test_ = hstack([i[1] for i in encoded_vectors])
+            return self.encoded_train_, self.encoded_test_
+        self.encoded_train_ = hstack([i for i in encoded_vectors])
+        return self.encoded_train_
 
     def encode(self):
         encoders = []
         if self._has_raw_column:
-            encoders.append(self.raw_encoder)
+            encoders.append(self.raw_encode)
         if self._has_word_column:
-            encoders.append(self.word_encoder)
+            encoders.append(self.word_encode)
         if self._has_onehot_column:
-            encoders.append(self.onehot_encoder)
-        return self._hstack_encoder(*encoders)
-
-    def _hstack_encoder(self, *encoders):
-        encoded_vectors = [encoder() for encoder in encoders]
-        if self._y is not None:
-            self.encoded_vector_X = hstack([i[0] for i in encoded_vectors])
-            self.encoded_vector_y = hstack([i[1] for i in encoded_vectors])
-            return self.encoded_vector_X, self.encoded_vector_y
-        self.encoded_vector_X = hstack([i for i in encoded_vectors])
-        return self.encoded_vector_X
+            encoders.append(self.onehot_encode)
+        return self._encode(*encoders)
